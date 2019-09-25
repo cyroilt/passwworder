@@ -210,7 +210,7 @@ def  cndu () :
     m1 =""
     m2 = ""
 boot = Tk()
-boot.title("passwworder 1.6")
+boot.title("passwworder 2.0")
 boot.configure(background='red')
 image= tk.PhotoImage(file='log\\backgrounds\\ges.png')
 boot.iconbitmap('log\\icos\\ges.ico')
@@ -220,12 +220,13 @@ panel1.image = image
 photo1= PhotoImage (file='log\\images\\one.png')
 photo2= PhotoImage (file='log\\images\\owo.png')
 photo3= PhotoImage (file='log\\images\\ohree.png')
+photoinfo= PhotoImage (file='log\\images\\info.png')
 bupg = Button(boot,image=photo2,bg="grey",padx="10",pady="20", command = passwgen)
 bupg.pack()
 cnd = Button(boot,image=photo1,bg="grey",padx="10",pady="20", command = cnd)
 cnd.pack()
 rnd = Button(boot,image=photo3,bg="grey",padx="10",pady="20", command = rnd)
 rnd.pack()
-butinf = Button(boot,image=photo3,bg="grey",padx="10",pady="20", command = rnd)
+butinf = Button(boot,image=photoinfo,bg="grey",padx="10",pady="20", command = createinfo)
 butinf.pack()
 boot.mainloop()
