@@ -1,27 +1,19 @@
+
+import dbl
 import discord
+from discord.ext import commands
 
-TOKEN = 'NzAwNjU3NDI5MTMzOTE4MjQ4.XpsmVA.9s-KPwqnOPC5m4Siol9tnhOMiF0'
 
-client = discord.Client()
+class TopGG(commands.Cog):
+    """Handles interactions with the top.gg API"""
 
-@client.event
-async def on_message(message):
-    # we do not want the bot to reply to itself
-    if message.author == client.user:
-        return
+    def __init__(self, bot):
+        self.bot = bot
+        self.token = ''NzAwNjU3NDI5MTMzOTE4MjQ4.XpsmVA.9s-KPwqnOPC5m4Siol9tnhOMiF0'' # set this to your DBL token
+        self.dblpy = dbl.DBLClient(self.bot, self.token, autopost=True) # Autopost will post your guild count every 30 minutes
 
-    if message.content.startswith('!hello'):
-        msg = 'Hello {0.author.mention}'.format(message)
-        await message.channel.send(msg)
-    if message.content.startswith('!score'):
-        msg = str(eval(message.content.replace('!score',''))).format(message)
-        await message.channel.send(msg)
+    async def on_guild_post():
+        print("Server count posted successfully")
 
-@client.event
-async def on_ready():
-    print('Logged in as')
-    print(client.user.name)
-    print(client.user.id)
-    print('------')
-
-client.run(TOKEN)
+def setup(bot):
+    bot.add_cog(TopGG(bot))
